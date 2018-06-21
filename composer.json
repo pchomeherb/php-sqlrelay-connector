@@ -19,7 +19,7 @@
     ],
     "autoload": {
         "psr-4" : {
-            "Mointeng\\SQLrelay\\" : "src/"
+            "Mointeng\\SQLRelay\\" : "src/"
         }
     },
     "minimum-stability": "dev"
