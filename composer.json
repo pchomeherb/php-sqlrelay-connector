@@ -1,0 +1,26 @@
+{
+    "name": "mointeng/sqlrelay",
+    "description": "SQLrelay PDO driver connect for laravel 5.6.x",
+    "type": "library",
+    "keywords":["laravel", "sqlrelay", "oracle"],
+    "require": {
+        "php": ">=7.1.3",
+        "yajra/laravel-oci8": "^5.6"
+    },
+    "require-dev": {
+        "yajra/laravel-oci8": "^5.6"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Moin Teng",
+            "email": "solitude316@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4" : {
+            "Mointeng\\SQLrelay\\" : "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
