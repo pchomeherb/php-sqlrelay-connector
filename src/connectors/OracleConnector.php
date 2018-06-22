@@ -27,7 +27,8 @@ class OracleConnector extends Connector implements ConnectorInterface
         $options = $this->getOptions($config);
 
         $connection = $this->createConnection($tns, $config, $options);
-        return $connection
+
+        return $connection;
     }
 
     public function getDsn(array $config)
