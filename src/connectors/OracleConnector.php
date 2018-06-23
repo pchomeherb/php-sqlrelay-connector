@@ -2,7 +2,6 @@
 namespace Mointeng\SQLRelay\Connectors;
 
 use PDO;
-use Yajra\Pdo\Oci8;
 use Illuminate\Database\Connectors\Connector;
 use Illuminate\Database\Connectors\ConnectorInterface;
 
