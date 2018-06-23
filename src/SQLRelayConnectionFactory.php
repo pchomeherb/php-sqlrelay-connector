@@ -1,22 +1,38 @@
 <?php
 namespace Mointeng\SQLRelay;
 
-use Mointeng\SQLRelay\Connectors\OracleConnector;
-use Yajra\Oci8\Oci8Connection;
+#use Illuminate\Database\Connectors\MySqlConnector;
+#use \Illuminate\Database\MysqlConnection;
+#use Yajra\Oci8\Oci8Connection\Oci8Connection;
+
+
 
 class SqlRelayConnectionFactory
 {
     public static function getInstance($connection, $database, $prefix, $config)
     {
-        $database = strtolower(trim($database));
-        switch($database) {
+        if (!isset($config['system'])) {
+            throw new \Exception ("Undefined Database system parameter \$config[\"system\"] while using sqlrelay driver");
+        }
+        $system = strtolower(trim($config['system']));
+
+        switch($system) {
             case 'mysql':
-                // TODO ....
+                $connector = new Connectors\MySqlConnector();
+                $connection = $connector->connect($config);
+                $db = new \Illuminate\Database\MysqlConnection($connection, $database, $prefix, $config);
+
+                break;
+            case 'postgres':
+            case 'pgsql':
+                $connector = new Connectors\PostgresConnector();
+                $connection = $connector->connect($config);
+                $db = new \Illuminate\Database\PostgresConnection($connection, $database, $prefix, $config);
                 break;
             case 'oracle':
-                $connector = new OracleConnector();
+                $connector = new Connectors\OracleConnector();
                 $connection = $connector->connect($config);
-                $db = new Oci8Connection($connection, $database, $prefix, $config);
+                $db = new \Yajra\Oci8\Oci8Connection($connection, $database, $prefix, $config);
 
                 // set oracle session variables
                 $sessionVars = [
@@ -36,12 +52,11 @@ class SqlRelayConnectionFactory
                 }
 
                 $db->setSessionVars($sessionVars);
-
-                return $db;
+                break;
             default:
                 return false;
         }
 
-
+        return $db;
     }
 }
