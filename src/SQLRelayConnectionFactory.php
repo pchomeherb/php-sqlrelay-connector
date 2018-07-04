@@ -32,7 +32,7 @@ class SqlRelayConnectionFactory
             case 'oracle':
                 $connector = new Connectors\OracleConnector();
                 $connection = $connector->connect($config);
-                $db = new \Yajra\Oci8\Oci8Connection($connection, $database, $prefix, $config);
+                $db = new Connections\OracleConnection($connection, $database, $prefix, $config);
 
                 // set oracle session variables
                 $sessionVars = [
