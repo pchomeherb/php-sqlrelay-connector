@@ -3,7 +3,7 @@ namespace Mointeng\SQLRelay;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Connection;
-use Mointeng\SQLRelay\SqlRelayConnectionFactory;
+use Mointeng\SQLRelay\SQLRelayConnectionFactory;
 use Mointeng\SQLRelay\Connectors\OracleConnector;
 
 class SQLRelayServiceProvider extends ServiceProvider
@@ -18,7 +18,7 @@ class SQLRelayServiceProvider extends ServiceProvider
         app()->bind('db.connector.sqlrelay', SQLRelayConnector::class);
 
         Connection::resolverFor('sqlrelay', function ($connection, $database, $prefix, $config) {
-            return SqlRelayConnectionFactory::getInstance($connection, $database, $prefix, $config);
+            return SQLRelayConnectionFactory::getInstance($connection, $database, $prefix, $config);
         });
     }
 }

@@ -7,7 +7,7 @@ namespace Mointeng\SQLRelay;
 
 
 
-class SqlRelayConnectionFactory
+class SQLRelayConnectionFactory
 {
     public static function getInstance($connection, $database, $prefix, $config)
     {
