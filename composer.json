@@ -4,8 +4,8 @@
     "type": "library",
     "keywords":["laravel", "sqlrelay", "oracle"],
     "require": {
-        "php": "^7.3|^8.0",
-        "yajra/laravel-oci8": "^8.0"
+        "php": "^7.3|^8.*",
+        "yajra/laravel-oci8": "^9.0"
     },
     "license": "MIT",
     "authors": [
